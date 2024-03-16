@@ -1,45 +1,16 @@
-class Cliente {
-    #nombre;
-    #impuesto;
-    constructor(nombre) {
-        this.#nombre = nombre;
-        this.#impuesto = {};
-    }
-    get getNombre() {
-        return this.#nombre;
-    }
+import { Cliente } from "./cliente.js";
+import { Impuestos } from "./impuesto.js";
 
-    set setNombre(nombre) {
-        this.#nombre = nombre;
-    }
+const mark = new Cliente("Mark Anthony");
 
-    calcularImpuesto() {
-        const resultado = (getMontoBrutoAnual - getDeducciones) * 0.21;
-        return resultado;
-    }
-}
+const brutoAnual1 = new Impuestos(500000, 100000);
+const brutoAnual2 = new Impuestos(600000, 200000);
+const brutoAnual3 = new Impuestos(700000, 300000);
+const brutoAnual4 = new Impuestos(800000, 400000);
 
-class Impuestos {
-    #montoBrutoAnual;
-    #deducciones;
-    constructor(montoBrutoAnual, deducciones) {
-        this.#montoBrutoAnual = montoBrutoAnual;
-        this.#deducciones = deducciones;
-    }
+mark.agregarImpuesto(brutoAnual1);
+mark.agregarImpuesto(brutoAnual2);
+mark.agregarImpuesto(brutoAnual3);
+mark.agregarImpuesto(brutoAnual4);
 
-    get getMontoBrutoAnual() {
-        return this.#montoBrutoAnual;
-    }
-
-    get getDeducciones() {
-        return this.#deducciones;
-    }
-
-    set setMontoBrutoAnual(monto) {
-        this.#montoBrutoAnual = monto;
-    }
-
-    set setDeducciones(montoDeduccion) {
-        this.#deducciones = montoDeduccion;
-    }
-}
+console.log(mark.calcularImpuesto());
